@@ -58,7 +58,7 @@ func! s:uncomment() range
   let lnum = a:firstline
   while lnum <= a:lastline
     let line = getline(lnum)
-    let newline = substitute(line, '^'.s:commentMarker(), '', '')   " uncomment
+    let newline = substitute(line, '^'.s:commentMarker().'\s\?', '', '')   " uncomment
     call setline(lnum, newline)
     let lnum += 1
   endwhile
