@@ -1,0 +1,38 @@
+" autocmd BufNewFile,BufRead *.rb setlocal tw=0 hls nonu
+" autocmd BufNewFile,BufRead *.md setlocal tw=72
+" autocmd BufNewFile,BufRead *.markdown setlocal tw=72
+" autocmd BufNewFile,BufRead NOTES setlocal tw=72
+" autocmd BufNewFile,BufRead *.sh setlocal tw=0 hls nonu
+" autocmd BufNewFile,BufRead *.erb setlocal tw=0 hls
+" autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead *.hs set ft=txt, tw=0
+
+" For test[:key] to test['key']
+func! StringKeys() 
+  %s/\[:\(\w\+\)\]/['\1']/g
+endfunc
+
+let g:netrw_http_cmd="el"
+
+func! s:osxprint() range
+  exec a:firstline .",".a:lastline."w! ~/temp-print.txt "
+  call system("~/temp.osa")
+endfunc
+
+command! -bar -range OSXPrint call s:osxprint()
+
+func! WrapModeOn()
+  :set wrap
+  :set linebreak
+  :set nolist
+  :set textwidth=0
+endfunc
+
+func! WrapModeOff()
+  :set nowrap
+  :set nolinebreak
+  :set list
+  :set textwidth=72
+endfunc
+
+
