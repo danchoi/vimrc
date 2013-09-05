@@ -8,7 +8,7 @@ nmap ,_ <ESC>:r !date +\%F<CR>  " inserts the date
 autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
 autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
 
-" Easily open hyperlinks in text editor:
+" Easily open hyperlinks in the current text buffer.
 " Place cursor before or at the beginning of a URL that
 " begins with http: or https: and press <leader>o
 
