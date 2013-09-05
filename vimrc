@@ -39,7 +39,7 @@ func! s:commentMarker()
   let ext = expand('%:e')
   if ext == 'js'
     return '//'
-  elsif ext == 'hs' 
+  elseif ext == 'hs' 
     return '--'
   else
     return '#'
@@ -49,7 +49,7 @@ func! s:comment() range
   let lnum = a:firstline
   while lnum <= a:lastline
     let line = getline(lnum)
-    let newline = substitute(line, '^', s:commentMarker(), '')      " comment out
+    let newline = substitute(line, '^', s:commentMarker() . ' ', '')      " comment out
     call setline(lnum, newline)
     let lnum += 1
   endwhile
