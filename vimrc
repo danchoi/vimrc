@@ -47,7 +47,6 @@ func! s:commentMarker()
 endfunc
 func! s:comment() range
   let lnum = a:firstline
-  let commentMarker = '#'
   while lnum <= a:lastline
     let line = getline(lnum)
     let newline = substitute(line, '^', s:commentMarker(), '')      " comment out
@@ -57,7 +56,6 @@ func! s:comment() range
 endfunc
 func! s:uncomment() range
   let lnum = a:firstline
-  let commentMarker = '#'
   while lnum <= a:lastline
     let line = getline(lnum)
     let newline = substitute(line, '^'.s:commentMarker(), '', '')   " uncomment
