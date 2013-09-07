@@ -2,9 +2,12 @@ let g:mapleader=','
 colorscheme desert
 set ai et ts=2 sw=2 tw=0 exrc nocursorline nonu
 syn off                         " turn off syntax coloring
-nmap ,a :r !cat<CR>             " for pasting text from clipboard
-nmap ,- 72i-<ESC>o              " draws a line of dashes
-nmap ,_ <ESC>:r !date +\%F<CR>  " inserts the date
+" for pasting text from clipboard
+nmap ,a :r !cat<CR>
+" draws a line of dashes
+nmap ,- 72i-<ESC>o
+" inserts the date
+nmap ,_ <ESC>:r !date +\%F<CR>
 autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
 autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
 
