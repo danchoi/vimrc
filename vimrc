@@ -1,6 +1,6 @@
 let g:mapleader=','
 colorscheme desert
-set ai et ts=2 sw=2 tw=0 exrc nocursorline nonu
+set ai et ts=2 sw=2 tw=0 exrc nocursorline nonu hls
 syn off                         " turn off syntax coloring
 " for pasting text from clipboard
 nmap ,a :r !cat<CR>
@@ -86,6 +86,5 @@ func! s:faster_open(a)
 endfunc
 
 
-
-
+abbr uph Unix Philosophy
 
