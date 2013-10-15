@@ -89,9 +89,11 @@ endfunc
 abbr uph Unix Philosophy
 
 
+" Shortcut for finding all matches for keyword under cursor in a Rails project
 func! s:vimgrep_shortcut()
   let w = expand("<cword>") 
-  exec "vimgrep ".w." app/**/* lib/**/*"
+  exec "vimgrep ".w." app/**/* lib/**/* "
+  :cl
 endfunc
 nnoremap <leader>g :call <SID>vimgrep_shortcut()<CR>
 
