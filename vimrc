@@ -88,3 +88,10 @@ endfunc
 
 abbr uph Unix Philosophy
 
+
+func! s:vimgrep_shortcut()
+  let w = expand("<cword>") 
+  exec "vimgrep ".w." app/**/* lib/**/*"
+endfunc
+nnoremap <leader>g :call <SID>vimgrep_shortcut()<CR>
+
