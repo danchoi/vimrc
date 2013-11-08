@@ -1,6 +1,6 @@
 let g:mapleader=','
 colorscheme desert
-set ai et ts=2 sw=2 tw=0 exrc nocursorline nonu hls
+set ai et ts=2 sw=2 tw=0 exrc nocursorline hls 
 syn off                         " turn off syntax coloring
 " for pasting text from clipboard
 nmap ,a :r !cat<CR>
@@ -96,4 +96,17 @@ func! s:vimgrep_shortcut()
   :cl
 endfunc
 nnoremap <leader>g :call <SID>vimgrep_shortcut()<CR>
+
+
+" runs the line on bash and appends output after the line
+func! RunBashAppend()
+  let cmd=getline('.')
+  let res=system(getline('.'))
+  normal j
+  silent! put! =res
+endfunc
+noremap! <leader>b :call RunBashAppend()<CR>
+
+
+
 
