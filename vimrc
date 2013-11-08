@@ -103,10 +103,9 @@ func! RunBashAppend()
   let cmd=getline('.')
   let res=system(getline('.'))
   normal j
+  put!
   silent! put! =res
 endfunc
-noremap! <leader>b :call RunBashAppend()<CR>
-
-
+nnoremap <leader>b :call RunBashAppend()<CR>
 
 
