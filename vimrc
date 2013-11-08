@@ -9,6 +9,7 @@ nmap ,- 72i-<ESC>o
 " inserts the date
 nmap ,_ <ESC>:r !date +\%F<CR>
 autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead diary.txt setlocal tw=72 hls
 autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
 
 " Easily open hyperlinks in the current text buffer.
@@ -103,7 +104,6 @@ func! RunBashAppend()
   let cmd=getline('.')
   let res=system(getline('.'))
   normal j
-  put!
   silent! put! =res
 endfunc
 nnoremap <leader>b :call RunBashAppend()<CR>
