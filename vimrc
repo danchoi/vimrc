@@ -8,9 +8,12 @@ nmap ,a :r !cat<CR>
 nmap ,- 72i-<ESC>o
 " inserts the date
 nmap ,_ <ESC>:r !date +\%F<CR>
-autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
-autocmd BufNewFile,BufRead diary.txt setlocal tw=72 hls
-autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
+" autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+" autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
+
+nnoremap ,, gqap
+nnoremap ,d :split ~/diary.txt<CR>G
+
 
 " Easily open hyperlinks in the current text buffer.
 " Place cursor before or at the beginning of a URL that
@@ -108,4 +111,6 @@ func! RunBashAppend()
 endfunc
 nnoremap <leader>b :call RunBashAppend()<CR>
 
+nnoremap <leader>t :set tw=72<CR>
+nnoremap <leader>T :set tw=0<CR>
 
