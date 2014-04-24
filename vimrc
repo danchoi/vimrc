@@ -8,8 +8,11 @@ nmap ,a :r !cat<CR>
 nmap ,- 72i-<ESC>o
 " inserts the date
 nmap ,_ <ESC>:r !date +\%F<CR>
-" autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead README setlocal tw=72 hls
 " autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
+autocmd BufNewFile,BufRead diary.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead *.lhs set fo=tcqro
 
 nnoremap ,, gqap
 nnoremap ,d :split ~/diary.txt<CR>G
@@ -32,7 +35,13 @@ func! s:open_href_under_cursor()
   let command = g:browser_command . " '" . shellescape(s:find_href()) . "' "
   call system(command)
 endfunc
+func! s:open_href_under_cursor_in_buffer()
+  let command = "elinks -dump -no-numbering -no-references '" . shellescape(s:find_href()) . "' > elinks.buffer "
+  call system(command)
+  sp elinks.buffer
+endfunc
 nnoremap <leader>o :call <SID>open_href_under_cursor()<CR>
+nnoremap <leader>O :call <SID>open_href_under_cursor_in_buffer()<CR>
 
 " Home-brewed commenter and uncommenter
 " :Comment and :Uncomment will comment out a given range of lines 
@@ -80,7 +89,7 @@ command! -bar -range Uncomment :<line1>,<line2>call s:uncomment()
 " Press TAB or shift-TAB to move through matches, and ENTER to open the file
 " shown.
 
-command -complete=custom,FasterOpenFunc -nargs=1 OP call s:faster_open(<f-args>)
+command! -complete=custom,FasterOpenFunc -nargs=1 OP call s:faster_open(<f-args>)
 func! FasterOpenFunc(A,L,P)
   return system("find app test spec lib config db -name '*".a:A."*' 2>/dev/null | awk -F / '{print $NF \" -> \" $0}'")
 endfun
@@ -90,13 +99,12 @@ func! s:faster_open(a)
 endfunc
 
 
-abbr uph Unix Philosophy
 
 
 " Shortcut for finding all matches for keyword under cursor in a Rails project
 func! s:vimgrep_shortcut()
   let w = expand("<cword>") 
-  exec "vimgrep ".w." app/**/* lib/**/* "
+  exec "vimgrep ".w." app/**/* lib/**/* . "
   :cl
 endfunc
 nnoremap <leader>g :call <SID>vimgrep_shortcut()<CR>
@@ -113,4 +121,8 @@ nnoremap <leader>b :call RunBashAppend()<CR>
 
 nnoremap <leader>t :set tw=72<CR>
 nnoremap <leader>T :set tw=0<CR>
+
+abbr uph UNIX PHILOSOPHY.
+abbr mack MackeyRMS
+abbr taht that
 
