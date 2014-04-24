@@ -123,6 +123,5 @@ nnoremap <leader>t :set tw=72<CR>
 nnoremap <leader>T :set tw=0<CR>
 
 abbr uph UNIX PHILOSOPHY.
-abbr mack MackeyRMS
 abbr taht that
 
