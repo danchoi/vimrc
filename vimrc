@@ -1,5 +1,6 @@
+" temporary
+:hi PmenuSel   ctermfg=White   ctermbg=Blue cterm=Bold guifg=White 
 let g:mapleader=','
-colorscheme desert
 set ai et ts=2 sw=2 tw=0 exrc nocursorline hls 
 syn off                         " turn off syntax coloring
 " for pasting text from clipboard
@@ -9,10 +10,11 @@ nmap ,- 72i-<ESC>o
 " inserts the date
 nmap ,_ <ESC>:r !date +\%F<CR>
 autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
+autocmd BufNewFile,BufRead *.md  set ft=txt 
 autocmd BufNewFile,BufRead README setlocal tw=72 hls
-" autocmd BufNewFile,BufRead *.md  setlocal tw=72 hls  
 autocmd BufNewFile,BufRead diary.txt setlocal tw=72 hls
 autocmd BufNewFile,BufRead *.lhs set fo=tcqro
+autocmd BufNewFile,BufRead *.rb set ft=ruby
 
 nnoremap ,, gqap
 nnoremap ,d :split ~/diary.txt<CR>G
@@ -124,4 +126,5 @@ nnoremap <leader>T :set tw=0<CR>
 
 abbr uph UNIX PHILOSOPHY.
 abbr taht that
+
 
