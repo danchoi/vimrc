@@ -8,7 +8,7 @@ nmap ,a :r !cat<CR>
 " draws a line of dashes
 nmap ,- 72i-<ESC>o
 " inserts the date
-nmap ,_ <ESC>:r !date +\%F<CR>
+nmap ,_ :silent r !date +\%F<CR>
 autocmd BufNewFile,BufRead *.txt setlocal tw=72 hls
 autocmd BufNewFile,BufRead *.md  set ft=txt 
 autocmd BufNewFile,BufRead README setlocal tw=72 hls
